@@ -24,7 +24,7 @@ public class LoginController extends BaseController{
 		this.loginService = loginService;
 	}
 
-	@GetMapping(value = "/alive")
+	@GetMapping(value ="/alive")
 	@ResponseStatus(HttpStatus.OK)
 	public String alive() {
 		return "I'm Alive";
