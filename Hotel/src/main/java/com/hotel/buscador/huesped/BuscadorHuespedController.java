@@ -1,4 +1,4 @@
-package com.hotel.buscador;
+package com.hotel.buscador.huesped;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -6,6 +6,6 @@ import com.crosscutting.BaseController;
 
 
 @RestController
-public class BuscadorController extends BaseController {
+public class BuscadorHuespedController extends BaseController {
 
 }
