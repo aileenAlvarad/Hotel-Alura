@@ -1,5 +1,7 @@
 package com.hotel.reservacion;
 
-public interface ReservacionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReservacionRepository extends JpaRepository<ReservacionEntity, Long>{
 
 }
