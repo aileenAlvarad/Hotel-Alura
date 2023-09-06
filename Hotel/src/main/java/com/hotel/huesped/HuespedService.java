@@ -40,8 +40,7 @@ public class HuespedService {
             // El huésped existe, por lo que se actualiza
             return huespedrepository.save(huespedEntity);
         } else {
-            // El huésped no existe, puedes manejar esta situación de acuerdo a tus requerimientos
-            // Puedes lanzar una excepción o realizar alguna otra acción
+             // Puedes lanzar una excepción o realizar alguna otra acción
             throw new RuntimeException("El huésped con ID " + huespedId + " no existe.");
         }
     }
@@ -53,8 +52,7 @@ public class HuespedService {
             // El huésped existe, por lo que se elimina
             huespedrepository.deleteById(id);
         } else {
-            // Puedes manejar esta situación de acuerdo a tus requerimientos
-            // Por ejemplo, lanzar una excepción o realizar alguna otra acción
+
             throw new RuntimeException("El huésped con ID " + id + " no existe.");
         }
     }
