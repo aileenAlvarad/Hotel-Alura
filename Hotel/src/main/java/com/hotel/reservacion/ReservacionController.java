@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +23,9 @@ import com.crosscutting.BaseController;
   "formaPago": "transferencia"
 }
  */
-//Put http://localhost:8080/hotel/reserva/  
+//Put http://localhost:8080/hotel/reservacion/  
 
-@RequestMapping("/reserva")
+@RequestMapping("/reservacion")
 @Controller
 @RestController 
 public class ReservacionController extends BaseController{
@@ -38,7 +39,7 @@ public class ReservacionController extends BaseController{
 	@PutMapping(value = "/")
 	@ResponseStatus(HttpStatus.OK)
 	public ReservacionEntity reservar(@RequestBody ReservacionDTO reservacionDTO) {
-		return reservacionService.registrarReservas(reservacionDTO);
+		return reservacionService.guardarReservas(reservacionDTO);
 	}
 	 
 	
@@ -46,6 +47,12 @@ public class ReservacionController extends BaseController{
 	@ResponseStatus(HttpStatus.OK)
 	public List<ReservacionEntity> consultar() {
 		return reservacionService.consultarTodasLasReservaciones();
+	}  
+	
+	@PostMapping(value = "/")
+	@ResponseStatus(HttpStatus.OK)
+	public ReservacionEntity modificar(@RequestBody ReservacionDTO reservacionDTO) {
+		return reservacionService.modificarReservacion(reservacionDTO);
 	}
 	
 	@DeleteMapping(value = "/eliminar/{id}")
