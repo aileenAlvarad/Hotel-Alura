@@ -1,5 +1,6 @@
 package com.hotel.huesped;
 
+import com.hotel.reservacion.ReservacionEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,17 +27,43 @@ public class HuespedController extends BaseController {
         return huespedservice.consultarTodo();
     }
 
-    @PutMapping(value = "/")
-    @ResponseStatus(HttpStatus.OK)
-    public String editarHuesped(@RequestBody HuespedEntity huespedEntity) {
-        return "La solicitud se envio"+huespedEntity.getName();}
 
-
-    @PostMapping(value = "/editar")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String crearHuesped(@RequestBody HuespedEntity huespedEntity) {
-return "Huesped Editado con el nombre de : "+huespedEntity.getName();
+    @GetMapping(value="/consultar/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public HuespedEntity consultarporId(@PathVariable Long id) {
+        return huespedservice.consultarPorId(id);
     }
+
+
+
+
+
+
+
+
+    @PostMapping(value = "/")
+    @ResponseStatus(HttpStatus.OK)
+    public HuespedEntity actualizarHuesped(@RequestBody HuespedEntity HuespedEntity) {
+         HuespedEntity updateHuesped=huespedservice.actualizarHuesped(HuespedEntity);
+        return updateHuesped;}
+
+
+    @PutMapping(value ="/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public HuespedEntity crearHuesped(@RequestBody HuespedEntity huespedEntity) {
+            return huespedservice.crearHuesped(huespedEntity);
+    }
+
+
+    @DeleteMapping(value = "/eliminar/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void borrarHuesped(@PathVariable Long id){
+
+      huespedservice.borrarHuesped(id);
+    }
+
+
+
 
 }
 
