@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+    <head>        
+        <!-- META SECTION -->
+        <title>Hotel Anima</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->                                    
+    </head>
+    <body>
+        
+        <div class="login-container">
+        
+            <div class="login-box animated fadeInDown">
+                <div class="login-logo"></div>
+                <div class="login-body">
+                    <div class="login-title"><strong>Bienvenido al hotel Anima</strong></div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Usuario" id="user"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" placeholder="Password" id="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-md-12">
+                              <input type="button" class="btn btn-info btn-block" onclick="login()" value="Login"> 
+                        </div>
+                    </div>
+                                  </div>
+                <div class="login-footer">
+                    <div class="pull-left">
+                        &copy; 2023 By Aileen Alvarado
+                    </div>
+                    <div class="pull-right">
+               			<div id="response" />
+                    </div>
+                </div>
+            </div>
+            
+        </div>  
+        
+        <script>
+	function login() {
+		let postObj = {  
+			    usuario: document.getElementById("user").value, 
+			    password: document.getElementById("password").value
+			}
+			
+	    let post = JSON.stringify(postObj)
+		const url = "/hotel/login/"
+		let xhr = new XMLHttpRequest()
+		xhr.open('POST', url, true)
+		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+		xhr.send(post);
+		xhr.onload = function () {
+		    if(xhr.status === 200) {
+		        document.getElementById("response").innerHTML = xhr.response;
+		    }
+		}
+	} 
+</script>	
+        
+    </body> 
+</html>
+
+
+
+
+
+
