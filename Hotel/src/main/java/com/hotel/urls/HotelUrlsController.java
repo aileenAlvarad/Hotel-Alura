@@ -24,6 +24,12 @@ public class HotelUrlsController {
 	public String altaReserva( ) {
 		  System.out.println("Alta Reservacion");
 		return "/altaReservacion2.html";
+	} 
+	
+	@GetMapping({"/altaHuesped"})
+	public String altaHuesped( ) {
+		  System.out.println("Alta Reservacion");
+		return "/altaHuesped.html";
 	}
 
 
