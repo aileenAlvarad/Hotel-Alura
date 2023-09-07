@@ -20,6 +20,9 @@ public class HuespedEntity {
 	
 	private String nacionalidad;
 
+
+	private String numeroDeTelefono;
+
 	public Long getId() {
 		return id;
 	}
@@ -51,7 +54,13 @@ public class HuespedEntity {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	
-	
+
+	public String getNumeroDeTelefono() {
+		return numeroDeTelefono;
+	}
+
+	public void setNumeroDeTelefono(String numeroDeTelefono) {
+		this.numeroDeTelefono = numeroDeTelefono;
+	}
 
 }
