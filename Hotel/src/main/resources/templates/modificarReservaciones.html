@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- META SECTION -->
-<title>Sistema de Reservación</title>
+<title>Actualizar Sistema de Reservación</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,7 +46,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h3 class="panel-title">
-									<strong>Sistema de Reservaciones </strong>
+									<strong>Actualizar Sistema de Reservaciones </strong>
 								</h3>
 								<ul class="panel-controls">
 									<li><a href="#" class="panel-remove"><span
@@ -54,13 +54,24 @@
 								</ul>
 							</div>
 							<div class="panel-body"></div>
-							<div class="panel-body">
+							<div class="panel-body"></div>
 
 								<div class="form-group">
 								</div>
 
 								<div class="form-group">
-								</div>
+								</div> 
+								
+								<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Id</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" id="id" class="form-control" disabled/>
+                                            </div>                                            
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
 
 								<div class="form-group">
 									<label class="col-md-3 col-xs-12 control-label">Fecha de Check In</label>
@@ -100,7 +111,7 @@
 								<div class="form-group">
 									<label class="col-md-3 col-xs-12 control-label">Método de Pago</label>
 									<div class="col-md-6 col-xs-12">
-										<select class="form-control select" id="formaPago">
+										<select class="form-control " id="formaPago">
 											<option>transferencia</option>
 											<option>Dinero en efectivo</option>
 										</select>
@@ -113,7 +124,7 @@
 							<div class="panel-footer">
 								<button class="btn btn-default" >Limpiar Formulario</button> 
 								<a href="/hotel/buscar">Ir a buscar Reservaciones o huespédes</a>
-								<input class="btn btn-primary pull-right" onclick="guardarReservacion()" type="button" value="Guardar" /> 
+								<input class="btn btn-primary pull-right" onclick="guardarReservacion()" type="button" value="Modificar" /> 
 								
 								
 							</div>
@@ -187,7 +198,37 @@
 		        window.alert("Tu informacion se guardó con exito! :)");
 		    }
 		}
+	}  
+	
+	function cargarReservacion(){
+		const urlParams = new URLSearchParams(window.location.search);
+		const id = urlParams.get('id'); 
+		const url = "/hotel/buscar/reservacion/" + id
+       		let xhr = new XMLHttpRequest()
+       		xhr.open('GET', url, true)
+       		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+       		xhr.onload = function () {
+       		    if(xhr.status === 200) {
+       		        //document.getElementById("consultarend").innerHTML = xhr.response;
+       		     	asignarValoresAReservacion(JSON.parse(xhr.response))
+       		    }
+       		}
+        	xhr.send();
+		
 	} 
+	function asignarValoresAReservacion(reservacion){
+		 document.getElementById("id").value = reservacion["id"];  
+		 document.getElementById("checkIn").value = reservacion["checkIn"]; 
+		 document.getElementById("checkOut").value = reservacion["checkOut"]; 
+		 document.getElementById("valorReserva").value = reservacion["valorReserva"]; 
+		 document.getElementById("formaPago").value = reservacion["formaPago"]; 
+		 
+	}
+
+	window.addEventListener('load', function() { //Cuando carga el html se manda a llamar a la funcion
+    	//init() 
+    	cargarReservacion()
+    }); 
 </script>	  
 </body>
 </html>

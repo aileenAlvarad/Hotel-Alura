@@ -20,7 +20,7 @@ public class HotelUrlsController {
 		return "/pages-login.html";
 	} 
 	
-	@GetMapping({"/altaReservacion"})
+	@GetMapping({"/altaReservacion"}) //http://localhost:8080/hotel/altaReservacion
 	public String altaReserva( ) {
 		  System.out.println("Alta Reservacion");
 		return "/altaReservacion2.html";
@@ -32,10 +32,16 @@ public class HotelUrlsController {
 		return "/altaHuesped.html";
 	} 
 	
-	@GetMapping({"/buscar"})
+	@GetMapping({"/buscar"}) //http://localhost:8080/hotel/buscar
 	public String buscador( ) {
 		  System.out.println("Buscador");
 		return "/buscar.html";
+	} 
+	
+	@GetMapping({"/modificarReservaciones"}) // http://localhost:8080/hotel/modificarReservaciones?id=1
+	public String modificadorReservaciones( ) {
+		  System.out.println("modificadorReservaciones");
+		return "/modificarReservaciones.html";
 	}
 	
 }
