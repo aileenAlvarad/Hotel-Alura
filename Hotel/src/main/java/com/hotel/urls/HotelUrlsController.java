@@ -37,5 +37,8 @@ public class HotelUrlsController {
 		  System.out.println("Buscador");
 		return "/buscar.html";
 	}
+
+
+
 	
 }
