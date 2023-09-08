@@ -28,8 +28,14 @@ public class HotelUrlsController {
 	
 	@GetMapping({"/altaHuesped"})
 	public String altaHuesped( ) {
-		  System.out.println("Alta Reservacion");
+		  System.out.println("Alta huesped");
 		return "/altaHuesped.html";
+	} 
+	
+	@GetMapping({"/buscar"})
+	public String buscador( ) {
+		  System.out.println("Buscador");
+		return "/buscar.html";
 	}
 
 
