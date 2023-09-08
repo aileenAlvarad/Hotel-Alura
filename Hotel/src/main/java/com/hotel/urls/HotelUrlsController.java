@@ -33,9 +33,6 @@ public class HotelUrlsController {
 	}
 
 
-	@GetMapping({"/altaHuesped"})
-	public String altaHuesped( ) {
-		return "/altaHuesped.html";
-	}
+
 	
 }

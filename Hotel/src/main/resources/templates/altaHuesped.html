@@ -31,24 +31,34 @@
                             <form class="form-horizontal">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>One Column</strong> Layout</h3>
+                                    <h3 class="panel-title "><strong>Registro </strong> Huespedes</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
                                 </div>
                                 <div class="panel-body">
-                                    <p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
+                                    <p>Por favor, complete la siguiente información para registrar a los huéspedes que se alojarán con nosotros. Su seguridad y comodidad son nuestra principal prioridad.</p>
                                 </div>
                                 <div class="panel-body">
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Text Field</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Nombre</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"/>
+                                                <input id="name" type="text" class="form-control"/>
                                             </div>
-                                            <span class="help-block">This is sample of text field</span>
+                                            <span class="help-block">Type your name</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">LastName</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input id="last_name" type="text" class="form-control"/>
+                                            </div>
+                                            <span class="help-block">Type your LastName</span>
                                         </div>
                                     </div>
 
@@ -59,71 +69,66 @@
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
                                                 <input type="password" class="form-control"/>
                                             </div>
-                                            <span class="help-block">Password field sample</span>
+                                            <span class="help-block">Confirm</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Confirm Password</label>
+
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input id="password" type="password" class="form-control"/>
+                                            </div>
+                                            <span class="help-block">Repeat Password Please</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Datepicker</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Date Birthday</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" class="form-control datepicker" value="2014-11-01">
+                                                <input id="birthday" type="text" class="form-control datepicker" value="2014-11-01">
                                             </div>
-                                            <span class="help-block">Click on input field to get datepicker</span>
+                                            <span class="help-block">Click on input field to get date Birthday</span>
                                         </div>
                                     </div>
 
+
+
+
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Textarea</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Nacionalidad</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <textarea class="form-control" rows="5"></textarea>
-                                            <span class="help-block">Default textarea field</span>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input id="nacionalidad" type="text" class="form-control"/>
+                                            </div>
+                                            <span class="help-block">Nacionalidad</span>
                                         </div>
                                     </div>
 
+
+
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Tags</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Numero de telefono</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <input type="text" class="tagsinput" value="First,Second,Third"/>
-                                            <span class="help-block">Default textarea field</span>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input id="telefono"type="tel" class="form-control"/>
+                                            </div>
+                                            <span class="help-block">Telefono</span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Select</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select class="form-control select">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                                <option>Option 4</option>
-                                                <option>Option 5</option>
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">File</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <input type="file" class="fileinput btn-primary" name="filename" id="filename" title="Browse file"/>
-                                            <span class="help-block">Input type file</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Checkbox</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <label class="check"><input type="checkbox" class="icheckbox" checked="checked"/> Checkbox title</label>
-                                            <span class="help-block">Checkbox sample, easy to use</span>
-                                        </div>
-                                    </div>
 
                                 </div>
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>
-                                    <button class="btn btn-primary pull-right">Submit</button>
+                                    <button type="submit" onclick="registrarHuesped()" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
                             </form>
@@ -137,56 +142,91 @@
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
-        
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
-            <div class="mb-container">
-                <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
-                    <div class="mb-content">
-                        <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
-                    </div>
-                    <div class="mb-footer">
-                        <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END MESSAGE BOX-->
 
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->             
-        
+
+
+
+
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
         <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>                
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
         <!-- END PLUGINS -->
-        
+
         <!-- THIS PAGE PLUGINS -->
         <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
+
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
         <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
         <script type="text/javascript" src="js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
-        <!-- END THIS PAGE PLUGINS -->       
-        
+        <!-- END THIS PAGE PLUGINS -->
+
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/settings.js"></script>
-        
-        <script type="text/javascript" src="js/plugins.js"></script>        
-        <script type="text/javascript" src="js/actions.js"></script>        
+
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/actions.js"></script>
+
         <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->                   
+    <!-- END SCRIPTS -->
+
+
+        <script>
+function registrarHuesped() {
+    // Obtener los valores de los campos del formulario
+    let nombre = document.getElementById("name").value;
+    let apellido = document.getElementById("last_name").value;
+    let contrasena = document.getElementById("password").value;
+    let fechaNacimiento = document.getElementById("birthday").value;
+    let nacionalidad = document.getElementById("nacionalidad").value;
+    let telefono = document.getElementById("telefono").value;
+
+    // Crear un objeto con los datos del formulario
+    let postObj = {
+        nombre: nombre,
+        apellido: apellido,
+        contrasena: contrasena,
+        fechaNacimiento: fechaNacimiento,
+        nacionalidad: nacionalidad,
+        telefono: telefono
+    };
+
+    // Convertir el objeto a una cadena JSON
+    let post = JSON.stringify(postObj);
+
+    // Especificar la URL a la que se enviarán los datos (ajusta la URL según tus necesidades)
+    const url = "/hotel/registro/";
+
+    // Crear una solicitud HTTP POST
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+
+    // Configurar el encabezado de la solicitud
+    xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+    // Enviar los datos JSON al servidor
+    xhr.send(post);
+
+    // Manejar la respuesta del servidor
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Mostrar la respuesta del servidor en un elemento HTML con el id "response"
+            document.getElementById("response").innerHTML = xhr.response;
+        }
+    };
+}
+</script>
+
+
+
+
+
+
+
+
     </body>
 </html>
 
