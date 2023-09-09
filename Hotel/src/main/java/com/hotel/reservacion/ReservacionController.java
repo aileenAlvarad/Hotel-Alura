@@ -23,7 +23,7 @@ import com.crosscutting.BaseController;
   "formaPago": "transferencia"
 }
  */
-//Put http://localhost:8080/hotel/reservacion/  
+//POST http://localhost:8080/hotel/reservacion/  
 
 @RequestMapping("/reservacion")
 @Controller
@@ -36,7 +36,7 @@ public class ReservacionController extends BaseController{
 		this.reservacionService = reservacionService;
 	}
 
-	@PutMapping(value = "/")
+	@PostMapping(value = "/")
 	@ResponseStatus(HttpStatus.OK)
 	public ReservacionEntity reservar(@RequestBody ReservacionDTO reservacionDTO) {
 		return reservacionService.guardarReservas(reservacionDTO);
@@ -49,7 +49,7 @@ public class ReservacionController extends BaseController{
 		return reservacionService.consultarTodasLasReservaciones();
 	}  
 	
-	@PostMapping(value = "/")
+	@PutMapping(value = "/")
 	@ResponseStatus(HttpStatus.OK)
 	public ReservacionEntity modificar(@RequestBody ReservacionDTO reservacionDTO) {
 		return reservacionService.modificarReservacion(reservacionDTO);
