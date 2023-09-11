@@ -41,15 +41,15 @@ public class HuespedController extends BaseController {
 
 
 
-    @PostMapping(value = "/")
+    @PutMapping(value = "/")
     @ResponseStatus(HttpStatus.OK)
     public HuespedEntity actualizarHuesped(@RequestBody HuespedEntity HuespedEntity) {
          HuespedEntity updateHuesped=huespedservice.actualizarHuesped(HuespedEntity);
         return updateHuesped;}
 
 
-    @PutMapping(value ="/")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value ="/")
+    @ResponseStatus(HttpStatus.OK)
     public HuespedEntity crearHuesped(@RequestBody HuespedEntity huespedEntity) {
             return huespedservice.crearHuesped(huespedEntity);
     }
