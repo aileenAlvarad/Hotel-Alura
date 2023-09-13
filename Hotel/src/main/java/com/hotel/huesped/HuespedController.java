@@ -28,14 +28,6 @@ public class HuespedController extends BaseController {
     }
 
 
-    @GetMapping(value="/consultar/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public HuespedEntity consultarporId(@PathVariable Long id) {
-        return huespedservice.consultarPorId(id);
-    }
-
-
-
 
 
 

@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
+
 @Entity
 @Table
 public class HuespedEntity {
@@ -15,7 +17,14 @@ public class HuespedEntity {
 	private Long id;
 	
 	private String name;
-	
+
+	private String lastName;
+
+
+	private LocalDate birthday;
+
+	private Long numeroDeReserva;
+
 	private String password;
 	
 	private String nacionalidad;
@@ -62,5 +71,39 @@ public class HuespedEntity {
 	public void setNumeroDeTelefono(String numeroDeTelefono) {
 		this.numeroDeTelefono = numeroDeTelefono;
 	}
+
+
+
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
+	public Long getNumeroDeReserva() {
+		return numeroDeReserva;
+	}
+
+	public void setNumeroDeReserva(Long numeroDeReserva) {
+		this.numeroDeReserva = numeroDeReserva;
+	}
+
+
+
+
+
+
 
 }
