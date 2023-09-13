@@ -48,41 +48,41 @@
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                                 <input id="name" type="text" class="form-control"/>
                                             </div>
-                                            <span class="help-block">Type your name</span>
+                                            <span class="help-block">Escribe tu nombre</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">LastName</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Apellido</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                                 <input id="last_name" type="text" class="form-control"/>
                                             </div>
-                                            <span class="help-block">Type your LastName</span>
+                                            <span class="help-block">Escribe tu apellido</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
+                                        <label class="col-md-3 col-xs-12 control-label">contraseña</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
                                                 <input type="password" class="form-control" id="password"/>
                                             </div>
-                                            <span class="help-block">Confirm</span>
+                                            <span class="help-block">Confirma</span>
                                         </div>
 
                                     </div>
 
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Date Birthday</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Fecha de cumpleaños</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                                 <input id="birthday" type="text" class="form-control datepicker" value="2014-11-01">
                                             </div>
-                                            <span class="help-block">Click on input field to get date Birthday</span>
+                                            <span class="help-block">Selecciona tu fecha de cumpleaños</span>
                                         </div>
                                     </div>
 
@@ -96,6 +96,7 @@
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                                 <input id="nacionalidad" type="text" class="form-control"/>
                                             </div>
+                                            <span class="help-block">Nacionalidad</span>
                                             <span class="help-block">Nacionalidad</span>
                                         </div>
                                     </div>
@@ -118,7 +119,7 @@
                                 </div>
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>
-                                    <a href="/hotel/buscarHuesped">GESTIONAR HUESPEDES</a>
+                                    <a href="/hotel/buscar">Gestionar Huespedes</a>
                                     <button type="button" onClick="registrarHuesped()" class="btn btn-primary pull-right">Enviar</button>
 
                                 </div>
@@ -167,6 +168,7 @@
 
 
         <script>
+
 function registrarHuesped() {
     // Obtener los valores de los campos del formulario
     let nombre = document.getElementById("name").value;
@@ -179,9 +181,9 @@ function registrarHuesped() {
     // Crear un objeto con los datos del formulario
     let postObj = {
         name: nombre,
-        apellido: apellido,
+        lastName: apellido,
         password: contrasena,
-        fechaNacimiento: fechaNacimiento,
+        birthday: fechaNacimiento,
         nacionalidad: nacionalidad,
         numeroDeTelefono: telefono
     };
@@ -190,7 +192,7 @@ function registrarHuesped() {
     let post = JSON.stringify(postObj);
 
     // Especificar la URL a la que se enviarán los datos (ajusta la URL según tus necesidades)
-    const url ="/hotel/huesped/";
+    const url = "/hotel/huesped/";
 
     // Crear una solicitud HTTP POST
     let xhr = new XMLHttpRequest();
@@ -205,13 +207,23 @@ function registrarHuesped() {
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-
-             window.alert("Tu informacion se guardó con exito! :)");
-             console.log(postObj);
-
+            // La respuesta del servidor debe incluir el ID asignado
+            let response = JSON.parse(xhr.responseText);
+            if (response.id) {
+                // Asignar el ID de la respuesta a la propiedad numeroDeReserva del objeto postObj
+                postObj.numeroDeReserva = response.id;
+                window.alert("Tu información se guardó con éxito! ID: " + response.id);
+                console.log(postObj);
+            } else {
+                window.alert("Hubo un error al guardar la información.");
+            }
         }
     };
 }
+
+
+
+
 </script>
 
 

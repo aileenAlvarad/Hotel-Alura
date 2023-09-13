@@ -57,9 +57,7 @@ public class HuespedService {
         }
     }
 
-    public HuespedEntity consultarPorId(Long id) {
-        return huespedrepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El huésped con ID " + id + " no existe."));
-    }
+
+
 
 }
