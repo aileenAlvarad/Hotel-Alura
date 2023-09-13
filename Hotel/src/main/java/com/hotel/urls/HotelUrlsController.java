@@ -28,7 +28,6 @@ public class HotelUrlsController {
 	
 	@GetMapping({"/altaHuesped"})
 	public String altaHuesped( ) {
-		  System.out.println("Alta huesped");
 		return "/altaHuesped.html";
 	} 
 	
@@ -44,6 +43,12 @@ public class HotelUrlsController {
 		return "/modificarReservaciones.html";
 	}
 
+
+	@GetMapping({"/modificarHuesped"}) // http://localhost:8080/hotel/modificarReservaciones?id=1
+	public String modificadorHuesped( ) {
+		System.out.println("modificadorReservaciones");
+		return "/modificarHuesped.html";
+	}
 
 
 	
