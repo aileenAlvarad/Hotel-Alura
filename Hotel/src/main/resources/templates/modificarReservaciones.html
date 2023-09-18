@@ -124,7 +124,7 @@
 							<div class="panel-footer">
 								<button class="btn btn-default" >Limpiar Formulario</button> 
 								<a href="/hotel/buscar">Ir a buscar Reservaciones o huespédes</a>
-								<input class="btn btn-primary pull-right" onclick="guardarReservacion()" type="button" value="Modificar" /> 
+								<input class="btn btn-primary pull-right" onclick="actualizarInformacion()" type="button" value="Modificar" /> 
 								
 								
 							</div>
@@ -178,8 +178,9 @@
 	<!-- END SCRIPTS --> 
 	
 	<script>
-	function guardarReservacion() {
-		let postObj = {  
+	function actualizarInformacion() {
+		let postObj = {   
+				id: document.getElementById("id").value, 
 			    checkIn: document.getElementById("checkIn").value, 
 			    checkOut: document.getElementById("checkOut").value, 
 			    valorReserva: document.getElementById("valorReserva").value,
@@ -189,7 +190,7 @@
 	    let post = JSON.stringify(postObj)
 		const url = "/hotel/reservacion/"
 		let xhr = new XMLHttpRequest()
-		xhr.open('POST', url, true)
+		xhr.open('PUT', url, true)
 		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
 		xhr.send(post);
 		xhr.onload = function () {
