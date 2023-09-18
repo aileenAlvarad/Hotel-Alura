@@ -2049,16 +2049,16 @@ ul.panel-controls > li > .dropdown-menu:before {
   border-color: #2c313b;
 }
 .btn-info {
-  background-color: #1caf9a;
-  border-color: #1caf9a;
+  background-color: #0a0a0a;
+  border-color: #fff;
 }
 .btn-info:hover,
 .btn-info:focus,
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
-  background-color: #29b2e1;
-  border-color: #29b2e1;
+  background-color: #0d0d0d70;
+  border-color: #1111125e;
 }
 .btn-info[disabled],
 .btn-info.disabled {
@@ -3896,16 +3896,16 @@ background: #1caf9a !important;
   border-radius: 0px;
 }
 .login-container .login-box .login-body .login-title {
-  color: #FFF;
+  color:#22262e;
   font-size: 19px;
   font-weight: 300;
   margin-bottom: 20px;
 }
 .login-container .login-box .login-body .form-control {
   border: 0px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.07);
   padding: 10px 15px;
-  color: #CCC;
+  color: #ffffff;
   line-height: 20px;
   height: auto;
 }
@@ -3958,7 +3958,7 @@ background: #1caf9a !important;
   width: 100%;
   float: left;
   padding: 10px;
-  color: #FFF;
+  color: #080808;
 }
 .login-container .login-box .login-footer a {
   color: #FFF;
