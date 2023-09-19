@@ -185,7 +185,8 @@ function registrarHuesped() {
         password: contrasena,
         birthday: fechaNacimiento,
         nacionalidad: nacionalidad,
-        numeroDeTelefono: telefono
+        numeroDeTelefono: telefono,
+
     };
 
     // Convertir el objeto a una cadena JSON
@@ -204,21 +205,17 @@ function registrarHuesped() {
     // Enviar los datos JSON al servidor
     xhr.send(post);
 
-    // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-            // La respuesta del servidor debe incluir el ID asignado
-            let response = JSON.parse(xhr.responseText);
-            if (response.id) {
-                // Asignar el ID de la respuesta a la propiedad numeroDeReserva del objeto postObj
-                postObj.numeroDeReserva = response.id;
-                window.alert("Tu información se guardó con éxito! ID: " + response.id);
-                console.log(postObj);
-            } else {
-                window.alert("Hubo un error al guardar la información.");
-            }
+            // Si la solicitud se completa sin errores
+            window.alert("Tu información se guardó con éxito!");
+            console.log(postObj);
+        } else {
+            // Si ocurre un error en la solicitud
+            window.alert("Hubo un error al guardar la información.");
         }
     };
+
 }
 
 

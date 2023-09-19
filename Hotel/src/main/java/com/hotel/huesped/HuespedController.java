@@ -42,8 +42,8 @@ public class HuespedController extends BaseController {
 
     @PostMapping(value ="/")
     @ResponseStatus(HttpStatus.OK)
-    public HuespedEntity crearHuesped(@RequestBody HuespedEntity huespedEntity) {
-            return huespedservice.crearHuesped(huespedEntity);
+    public HuespedEntity crearHuesped(@RequestBody HuespedDTO huespedDTO) throws Exception {
+            return huespedservice.crearHuesped(huespedDTO);
     }
 
 

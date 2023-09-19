@@ -23,6 +23,8 @@ public class HuespedEntity {
 
 	private LocalDate birthday;
 
+
+
 	private Long numeroDeReserva;
 
 	private String password;
@@ -73,7 +75,9 @@ public class HuespedEntity {
 	}
 
 
-
+	public void setNumeroDeReserva(Long numeroDeReserva) {
+		this.numeroDeReserva = numeroDeReserva;
+	}
 
 
 	public String getLastName() {
@@ -92,13 +96,14 @@ public class HuespedEntity {
 		this.birthday = birthday;
 	}
 
+
+
+
 	public Long getNumeroDeReserva() {
 		return numeroDeReserva;
 	}
 
-	public void setNumeroDeReserva(Long numeroDeReserva) {
-		this.numeroDeReserva = numeroDeReserva;
-	}
+
 
 
 
