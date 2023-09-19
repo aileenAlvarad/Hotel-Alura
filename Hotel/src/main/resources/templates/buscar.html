@@ -51,7 +51,7 @@
 		 <input type="radio" id="html" name="buscarElemento" value="reservaciones">
 		  <label for="html">Reservaciones</label><br> 
 		
-		<input type="button" value="buscar" onclick="buscarHuesped()"/> &nbsp; &nbsp;  
+		<input type="button" value="buscar" onclick="buscar()"/> &nbsp; &nbsp;  
 		
 		 <a href="/hotel/altaReservacion">Ir a Registro de Reservación</a> &nbsp; &nbsp;
 		  <a href="/hotel/altaHuesped">Ir a Registro de Huesped</a>
@@ -216,7 +216,7 @@
         	xhr.send();
         }
         
-        function initHuesped(elementos){
+        function initHuesped(elementos){ //init significa que se ejecuta cunado carga la funcion
         	let valorActivo = document.querySelector('input[name="buscarElemento"]:checked').value;
         	let header = `
         		<table class="table datatable">
@@ -244,9 +244,9 @@
         			<tr>
         			<td>${elementoIndex["id"]}</td>
         			<td>${elementoIndex["name"]}</td>
-        			<td>${elementoIndex["apellido"]}</td>
+        			<td>${elementoIndex["lastName"]}</td>
         			<td>${elementoIndex["password"]}</td>
-        			<td>${elementoIndex["fecha-nacimiento"]}</td>
+        			<td>${elementoIndex["birthday"]}</td>
         			<td>${elementoIndex["nacionalidad"]}</td>
         			<td>${elementoIndex["numeroDeTelefono"]}</td> 
         			<td>${elementoIndex["numeroDeReserva"]}</td>
@@ -265,14 +265,23 @@
         	miDiv.innerHTML = header + trs + cierrre
         }  
         
-        function buscar(){
+        function buscar(){//Buscar funcion generearl
         	let valorActivo = document.querySelector('input[name="buscarElemento"]:checked').value;
         	if(valorActivo == "huesped"){
-        		
+        		 	buscarHuesped()
         	}else{
-        		
+        		buscarReservacion()
         	} 
         } 
+        
+        function buscarReservacion(){
+	       	let buscarId = document.getElementById("buscarInput").value;
+	       	if(buscarId){  ///Significa que si existe el id
+	       	 	buscarReservacionPorId(buscarId)
+	       	} else {
+	       		consultarTodasLasReservaciones()
+	       	}
+       }
         
         function buscarHuesped(){
         	 let buscarId = document.getElementById("buscarInput").value;
@@ -283,7 +292,7 @@
         	}
         }
         
-        function buscarHuespedPorId(buscarId){
+        function buscarReservacionPorId(buscarId){
         	//let contenido = document.getElementById("buscarInput").value;
         	const url = "/hotel/buscar/reservacion/" + buscarId
            		let xhr = new XMLHttpRequest()
@@ -297,6 +306,23 @@
            		}
             	xhr.send();
         }  
+        
+        function buscarHuespedPorId(buscarId){
+        	//let contenido = document.getElementById("buscarInput").value;
+        	const url = "/hotel/buscar/huesped/" + buscarId
+           		let xhr = new XMLHttpRequest()
+           		xhr.open('GET', url, true)
+           		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+           		xhr.onload = function () {
+           		    if(xhr.status === 200) {
+           		        //document.getElementById("consultarend").innerHTML = xhr.response;
+           		     	initHuesped([JSON.parse(xhr.response)])
+           		    }
+           		}
+            	xhr.send();
+        }  
+        
+        
         
         function buscarTodosLosHuesped(){
         	const url = "/hotel/reservacion/consultar"
