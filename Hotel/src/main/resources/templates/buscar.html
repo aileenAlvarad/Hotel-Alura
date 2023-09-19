@@ -51,9 +51,10 @@
 		 <input type="radio" id="html" name="buscarElemento" value="reservaciones">
 		  <label for="html">Reservaciones</label><br> 
 		
-		<input type="button" value="buscar" onclick="buscarHuesped()"/> 
+		<input type="button" value="buscar" onclick="buscarHuesped()"/> &nbsp; &nbsp;  
 		
-		 <a href="/hotel/altaReservacion">Ir a Registro de Reservación</a>
+		 <a href="/hotel/altaReservacion">Ir a Registro de Reservación</a> &nbsp; &nbsp;
+		  <a href="/hotel/altaHuesped">Ir a Registro de Huesped</a>
 		<div class="row">
 		
 		
@@ -70,8 +71,9 @@
 								<th>Fecha Nacimiento</th>
 								<th>Nacionalidad</th>
 								<th>Telefono</th>
-								<th>Numero de reserva</th>
-
+								<th>Numero de reserva</th> 
+								<th>Modificar</th> 
+								<th>Eliminar</th>  
 							</tr>
 						</thead>
 						<tbody>
@@ -82,7 +84,10 @@
 								<td>61</td>
 								<td>2011/04/25</td>
 								<td>$320,800</td>
-								<td>Tiger Nixon</td>
+								<td>Tiger Nixon</td> 
+								<td>Modificar</td>
+								<td>Eliminar</td>
+								
 							</tr>
 
 						</tbody>
@@ -138,6 +143,7 @@
         window.addEventListener('load', function() { ////Cuando carga el html se manda a llamar a la funcion
         	//init() 
         	consultarTodasLasReservaciones()
+        	 consultarTodosLosHuespedes()
         }); 
         
         function initReservacion(elementos){
@@ -166,9 +172,10 @@
                     <td>${elementoIndex["checkOut"]}</td>
                     <td>${elementoIndex["valorReserva"]}</td>
                     <td>${elementoIndex["formaPago"]}</td>
-                    <td> <a class="fcc-btn" href="http://localhost:8080/hotel/modificarReservaciones?id=${elementoIndex['id']}">Modificar</a>  </td> 
-                    <td><a class="fcc-btn" href="https://www.freecodecamp.org/">Eliminar</a>  </td>
-                </tr>`
+                    <td> <a class="fcc-btn" href="/hotel/modificarReservaciones?id=${elementoIndex['id']}">Modificar</a>  </td> 
+                    <td> <a href="#" onclick="eliminarReservacion(${elementoIndex['id']})">Eliminar</a></td>
+                   
+                    </tr>`
         	});
         	
         	
@@ -196,14 +203,14 @@
         
         
         function consultarTodosLosHuespedes(){
-        	const url = "/hotel/reservacion/consultar"
+        	const url = "/hotel/huesped/consultar"
        		let xhr = new XMLHttpRequest()
        		xhr.open('GET', url, true)
        		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
        		xhr.onload = function () {
-       		    if(xhr.status === 200) {
+       		    if(xhr.status === 202) {
        		        //document.getElementById("consultarend").innerHTML = xhr.response;
-       		     	initReservacion(JSON.parse(xhr.response))
+       		     	initHuesped(JSON.parse(xhr.response))
        		    }
        		}
         	xhr.send();
@@ -212,33 +219,41 @@
         function initHuesped(elementos){
         	let valorActivo = document.querySelector('input[name="buscarElemento"]:checked').value;
         	let header = `
-        		   <table class="table datatable">
-                <thead>
-                <tr>
-	                <th>Id</th>
-	                <th>Nombre</th>
-	                <th>Apellido</th>
-	                <th>Fecha Nacimiento</th>
-	                <th>Nacionalidad</th>
-	                <th>Telefono</th>
-					<th>Numero de reserva</th>
-				
-            	</tr>
-                </thead>
-                <tbody>
-        	`; 
+        		<table class="table datatable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Password</th>
+						<th>Fecha de Nacimiento</th>
+						<th>Nacionalidad</th>
+						<th>Telefono</th>
+						<th>Numero de reserva</th> 
+						<th>Modificar</th> 
+						<th>Eliminar</th>  
+					</tr>  
+				</thead>  
+				<tbody>
+                
+                
+        	`;  
         	let trs = "";
         	elementos.forEach((elementoIndex, indice) => {
         		trs += `
-           		 <tr>
-                    <td>${elementoIndex["id"]}</td>
-                    <td>${elementoIndex["checkIn"]}</td>
-                    <td>${elementoIndex["checkOut"]}</td>
-                    <td>${elementoIndex["valorReserva"]}</td>
-                    <td>${elementoIndex["formaPago"]}</td>
-                    <td> <a class="fcc-btn" href="https://www.freecodecamp.org/">Modificar</a>  </td> 
-                    <td><a class="fcc-btn" href="https://www.freecodecamp.org/">Eliminar</a>  </td>
-                </tr>`
+        			<tr>
+        			<td>${elementoIndex["id"]}</td>
+        			<td>${elementoIndex["name"]}</td>
+        			<td>${elementoIndex["apellido"]}</td>
+        			<td>${elementoIndex["password"]}</td>
+        			<td>${elementoIndex["fecha-nacimiento"]}</td>
+        			<td>${elementoIndex["nacionalidad"]}</td>
+        			<td>${elementoIndex["numeroDeTelefono"]}</td> 
+        			<td>${elementoIndex["numeroDeReserva"]}</td>
+        			 <td> <a class="fcc-btn" href="/hotel/modificarHuesped?id=${elementoIndex['id']}">Modificar</a>  </td> 
+                     <td> <a href="#" onclick="eliminarHuesped(${elementoIndex['id']})">Eliminar</a></td>
+				</tr>
+				`
         	});
         	
         	
@@ -246,7 +261,7 @@
         		</tbody>
                 </table>
         	`;
-        	let miDiv = document.getElementById("div2");
+        	let miDiv = document.getElementById("consultarend");
         	miDiv.innerHTML = header + trs + cierrre
         }  
         
@@ -297,6 +312,33 @@
             	xhr.send();
         }  
         
+        function eliminarReservacion(id){
+        	const url = "/hotel/reservacion/eliminar/" + id
+           		let xhr = new XMLHttpRequest()
+           		xhr.open('DELETE', url, true)
+           		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+           		xhr.onload = function () {
+           		    if(xhr.status === 200) {
+           		       alert("Se elimino correctamente")
+           		    window.location.reload();
+           		    }
+           		}
+            	xhr.send();
+        }
+        
+        function eliminarHuesped(id){
+        	const url = "/hotel/huesped/eliminar/" + id
+           		let xhr = new XMLHttpRequest()
+           		xhr.open('DELETE', url, true)
+           		xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+           		xhr.onload = function () {
+           		    if(xhr.status === 200) {
+           		       alert("Se elimino correctamente")
+           		    window.location.reload();
+           		    }
+           		}
+            	xhr.send();
+        }
         </script>
 </body>
 </html>
