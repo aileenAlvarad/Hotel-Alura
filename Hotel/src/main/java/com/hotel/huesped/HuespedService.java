@@ -29,7 +29,7 @@ public class HuespedService {
 
             HuespedEntity huespedEntity = new HuespedEntity();
             huespedEntity.setName(huespedDTO.name());
-            huespedEntity.setLastName(huespedDTO.name());
+            huespedEntity.setLastName(huespedDTO.lastName());
             huespedEntity.setBirthday(birthday);
             huespedEntity.setId(huespedDTO.id());
             huespedEntity.setNacionalidad(huespedDTO.nacionalidad());
