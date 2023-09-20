@@ -44,7 +44,7 @@ public class HotelUrlsController {
 	}
 
 
-	@GetMapping({"/modificarHuesped"}) // http://localhost:8080/hotel/modificarReservaciones?id=1
+	@GetMapping({"/modificarHuesped"}) // http://localhost:8080/hotel/modificarHuesped?id=1
 	public String modificadorHuesped( ) {
 		System.out.println("modificadorReservaciones");
 		return "/modificarHuesped.html";
