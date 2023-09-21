@@ -1,6 +1,7 @@
 package com.hotel.huesped;
 
 import jakarta.transaction.Transactional;
+import org.hibernate.sql.model.jdbc.OptionalTableUpdateOperation;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -8,6 +9,7 @@ import javax.swing.text.html.parser.Entity;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 
@@ -80,7 +82,13 @@ public class HuespedService {
     public HuespedEntity actualizarHuesped(HuespedEntity huespedEntity) {
         // Verificar si el huésped existe en la base de datos por su ID
         Long huespedId = huespedEntity.getId();
-        if (huespedId != null && huespedrepository.existsById(huespedId)) {
+
+        Optional<HuespedEntity > huespedEntityOptional= huespedrepository.findById(huespedId);
+
+        if (huespedEntityOptional.isPresent()) {
+            HuespedEntity huespedPass=huespedEntityOptional.get();
+            huespedEntity.setPassword(huespedPass.getPassword());
+            huespedEntity.setNumeroDeReserva(huespedPass.getNumeroDeReserva());
             // El huésped existe, por lo que se actualiza
             return huespedrepository.save(huespedEntity);
         } else {
@@ -100,6 +108,8 @@ public class HuespedService {
             throw new RuntimeException("El huésped con ID " + id + " no existe.");
         }
     }
+
+
 
 
 

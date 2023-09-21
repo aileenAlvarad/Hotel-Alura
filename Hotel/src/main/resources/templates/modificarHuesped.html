@@ -32,13 +32,13 @@
 			<form class="form-horizontal">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title "><strong>Registro </strong> Huespedes</h3>
+						<h3 class="panel-title "><strong>Actualización  </strong> de Datos</h3>
 						<ul class="panel-controls">
 							<li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
 						</ul>
 					</div>
 					<div class="panel-body">
-						<p>Por favor, complete la siguiente información para registrar a los huéspedes que se alojarán con nosotros. Su seguridad y comodidad son nuestra principal prioridad.</p>
+						<p>Por favor, actualice  la siguiente información ...</p>
 					</div>
 					<div class="panel-body">
 
@@ -126,7 +126,7 @@
 					<div class="panel-footer">
 						<button class="btn btn-default">Clear Form</button>
 						<a href="/hotel/buscar">Gestionar Huespedes</a>
-						<button type="button" onClick="registrarHuesped()" class="btn btn-primary pull-right">Enviar</button>
+						<button type="button" onClick="huespedActualizado()" class="btn btn-primary pull-right">Actualizar</button>
 
 					</div>
 				</div>
@@ -174,7 +174,85 @@
 <!-- END SCRIPTS -->
 
 
-<script>
+
+
+	<script>
+    window.addEventListener('load', function() {
+        // Obtener el ID del huésped de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const huéspedId = urlParams.get('id');
+
+        // Realizar una solicitud al servidor para obtener los datos del huésped
+        const url = `/hotel/buscar/huesped/${huéspedId}`; // Reemplaza con la URL correcta para obtener datos del huésped
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Llenar los campos del formulario con los datos del huésped
+                document.getElementById('id').value = data.id;
+                document.getElementById('name').value = data.name;
+                document.getElementById('last_name').value = data.lastName;
+                document.getElementById('birthday').value = data.birthday;
+                document.getElementById('nacionalidad').value = data.nacionalidad;
+                document.getElementById('telefono').value = data.numeroDeTelefono;
+            })
+            .catch(error => {
+                console.error('Error al obtener datos del huésped:', error);
+            });
+    });
+
+
+function huespedActualizado() {
+    // Obtener el ID del huésped
+    const id = document.getElementById('id').value;
+
+    // Obtener los valores actualizados de los campos del formulario
+    const nombre = document.getElementById('name').value;
+    const apellido = document.getElementById('last_name').value;
+    const birthday = document.getElementById('birthday').value;
+    const nacionalidad = document.getElementById('nacionalidad').value;
+    const telefono = document.getElementById('telefono').value;
+
+    // Crear un objeto con los datos modificados del huésped
+    const huéspedModificado = {
+        id: id,
+        name: nombre,
+        lastName: apellido,
+        birthday: birthday,
+        nacionalidad: nacionalidad,
+        numeroDeTelefono: telefono
+    };
+
+    // Elimina los campos que no deseas actualizar
+    delete huéspedModificado.numeroDeReserva;
+    delete huéspedModificado.password;
+
+    // Realizar una solicitud AJAX para enviar los datos actualizados al servidor
+    fetch(`/hotel/huesped/`, {
+        method: 'PUT', // Utiliza el método HTTP PUT para actualizar el huésped
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(huéspedModificado)
+    })
+    .then(response => {
+        if (response.status === 200) {
+            // La actualización fue exitosa, puedes redirigir a otra página o mostrar un mensaje de éxito
+            alert('Los datos del huésped se actualizaron correctamente.');
+            // Redirigir a la página de gestión de huéspedes, por ejemplo:
+            window.location.href = '/hotel/buscar';
+        } else {
+            // La actualización falló, puedes manejar el error de acuerdo a tus necesidades
+            alert('Hubo un error al actualizar los datos del huésped.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al enviar la solicitud de actualización:', error);
+    });
+}
+
+
+
+
 </script>
 
 
