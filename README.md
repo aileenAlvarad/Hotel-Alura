@@ -1,4 +1,4 @@
-       <h1 align="center">Proyecto Hotel Alura Aloha Paradise :anchor:</h1>  
+<h1 align="center">Proyecto Hotel Alura Aloha Paradise :anchor:</h1>  
 Bienvenidos a nuestro proyecto. 
 
 Hola, nuestro proyecto consiste en una página web para el manejo de registro de huéspedes y reservaciones.
