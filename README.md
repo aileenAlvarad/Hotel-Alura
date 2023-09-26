@@ -12,3 +12,5 @@ Para la parte del Back-end Java, H2 y Spring Boot.
 
 <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/598820/header.jpg?t=1554126474" heigth="600px">
 
+    Documentación
+https://app.diagrams.net/#G1vcSHz3u7GPYFLSXbVYRzhgFcy5lHkHMF#%7B%22pageId%22%3A%22XhAJDA6JDiqXwO3VBQ9T%22%7D
