@@ -28,7 +28,11 @@ public class HuespedController extends BaseController {
     }
 
 
-
+    @GetMapping(value="/hola")
+    @ResponseStatus(HttpStatus.OK)
+    public String hola() {
+        return "HOla estoy vivo";
+    }
 
 
 
