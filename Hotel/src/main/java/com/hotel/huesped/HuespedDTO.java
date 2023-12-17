@@ -8,8 +8,8 @@ public record HuespedDTO(
         String birthday,
         Long numeroDeReserva,
         String nacionalidad,
-        String numeroDeTelefono,
-        String password
+        String numeroDeTelefono
+
 ) {
 
     // Puedes agregar métodos de acceso (getters) si lo deseas
